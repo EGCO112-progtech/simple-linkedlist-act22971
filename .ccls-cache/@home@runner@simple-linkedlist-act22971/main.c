@@ -36,12 +36,12 @@ int main(int argc, const char * argv[]) {
         
 */
   z.value = 2;
-  z.next =p;
+  z.next =&a;
   head = &z;
-      printf("%d\n", head ->value ); //what value for 2
-    printf("%d\n", head ->next->value ); //what value for 5
-    printf("%d\n", head ->next ->next->value );//what value for 8
-    printf("%d\n", head ->next ->next->next ->value );//what value for 11
+      printf("%3d\n", head ->value ); //what value for 2
+    printf("%3d\n", head ->next->value ); //what value for 5
+    printf("%3d\n", head ->next ->next->value );//what value for 8
+    printf("%3d\n", head ->next ->next->next ->value );//what value for 11
 
   printf("\n");
   
@@ -60,19 +60,35 @@ int main(int argc, const char * argv[]) {
    /*  Exercise IV change to while loop!! (you can use NULL to help)*/
         i=0;
       tmp=head;
-         while(tmp!=NULL){
+         while(i<4){
             printf("%3d\n", tmp->value);
             tmp = tmp->next;
-           
+           i++;
         }
      printf("\n");
     
  /*  Exercise V Use malloc to create all nodes, instead of create a struct!!*/
          //use a loop to help
-    struct node *p=(struct node*)malloc(sizeof(struct node)*100);
-    struct node *q=(struct node*)malloc(sizeof(struct node)*100);
-    struct node *r=(struct node*)malloc(sizeof(struct node)*100);
-    struct node *s=(struct node*)malloc(sizeof(struct node)*100);
+     tmp=head;
+     struct node *p=(struct node*)malloc(sizeof(struct node));
+    for(i=0;i<4;i++){
+      p->next = (struct node*)malloc(sizeof(struct node));
+       p = p->next;
+      p->value = 2+(i*3); 
+       printf("%3d\n", p ->value ); 
+         
+    }
+
+
+
+
+
+  
+  /*
+    struct node *p=(struct node*)malloc(sizeof(struct node));
+    struct node *q=(struct node*)malloc(sizeof(struct node));
+    struct node *r=(struct node*)malloc(sizeof(struct node));
+    struct node *s=(struct node*)malloc(sizeof(struct node));
     p->value = c;
     p->next=q;
     head=p;
@@ -83,7 +99,11 @@ int main(int argc, const char * argv[]) {
   s->value = 2;
   s->next =p;
   head = s;
-  
+   tmp=head;
+        for(i=0;i<4;i++){
+            printf("%3d\n", tmp->value);
+         tmp = tmp->next;
+        }*/
 
     /*  Exercise VI Free all node !!
          //use a loop to help
