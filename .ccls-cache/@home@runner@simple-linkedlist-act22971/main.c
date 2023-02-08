@@ -15,10 +15,11 @@
  */
 int main(int argc, const char * argv[]) {
     int c=5;
-    struct node a,b,*head,d,z,*temp ;
-    a.value = c;
-    a.next=&b;
-    head=&a;
+    struct node b,*head,d,z,*temp ;
+    struct node *p=(struct node*)malloc(sizeof(struct node)*100);
+    p->value = c;
+    p->next=&b;
+    head=p;
     b.value=head->value+3;
     b.next=&d;
     d.value=head ->next->value+3;
@@ -34,7 +35,7 @@ int main(int argc, const char * argv[]) {
         
 */
   z.value = 2;
-  z.next =&a;
+  z.next =p;
   head = &z;
       printf("%d\n", head ->value ); //what value for 2
     printf("%d\n", head ->next->value ); //what value for 5
@@ -51,25 +52,26 @@ int main(int argc, const char * argv[]) {
         for(i=0;i<n;i++){
             printf("%3d\n", tmp->value);
          tmp = tmp->next;
-          // What is missing???
+         
         }
     printf("\n");
     
    /*  Exercise IV change to while loop!! (you can use NULL to help)*/
         i=0;
       tmp=head;
-         while(i<4){
+         while(tmp!=NULL){
             printf("%3d\n", tmp->value);
             tmp = tmp->next;
-           i++;
-           // What is missing???
+           
         }
      printf("\n");
     
- /*  Exercise V Use malloc to create all nodes, instead of create a struct!!
+ /*  Exercise V Use malloc to create all nodes, instead of create a struct!!*/
          //use a loop to help
-          
-     */
+
+
+
+  
 
     /*  Exercise VI Free all node !!
          //use a loop to help
