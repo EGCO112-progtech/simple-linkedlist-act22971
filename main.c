@@ -15,14 +15,28 @@
  */
 int main(int argc, const char * argv[]) {
     int c=5;
-    struct node a,b,*head,d,z,*temp ;
-    a.value = c;
+  int i,n=4;
+    struct node /*a,b,d,*/z,*head,*tmp ;
+    struct node *p=(struct node*)malloc(sizeof(struct node));
+    p->value = 2;
+    head = p;
+    for(i=0;i<4;i++){
+      p->next = (struct node*)malloc(sizeof(struct node));
+       p = p->next;
+      p->value = 2+(i*3); 
+       printf("%3d\n", p ->value ); 
+      p->next=NULL;
+         
+    }
+/*  struct node *head=(struct node*)malloc(sizeof(struct node));
+  struct node *tmp=(struct node*)malloc(sizeof(struct node));*/
+   /* a.value = c;
     a.next=&b;
     head=&a;
     b.value=head->value+3;
     b.next=&d;
     d.value=head ->next->value+3;
-    d.next=NULL;
+    d.next=NULL;*/
 
 
    /* printf("%d\n", head ->value ); //what value for 5
@@ -35,21 +49,20 @@ int main(int argc, const char * argv[]) {
         2. Add value (2)
         
 */
-  z.value = 2;
+  /*z.value = 2;
   z.next =&a;
   head = &z;
       printf("%3d\n", head ->value ); //what value for 2
     printf("%3d\n", head ->next->value ); //what value for 5
     printf("%3d\n", head ->next ->next->value );//what value for 8
     printf("%3d\n", head ->next ->next->next ->value );//what value for 11
-
+*/
   printf("\n");
-  
-    typedef struct node* NodePtr;
-    NodePtr tmp=head; //add temp value to faciliate
+
+  tmp=head; //add temp value to faciliate
         
     //  Exercise III Use loop to print everything
-        int i,n=4;
+        
         for(i=0;i<n;i++){
             printf("%3d\n", tmp->value);
          tmp = tmp->next;
@@ -69,46 +82,19 @@ int main(int argc, const char * argv[]) {
     
  /*  Exercise V Use malloc to create all nodes, instead of create a struct!!*/
          //use a loop to help
-     tmp=head;
-     struct node *p=(struct node*)malloc(sizeof(struct node));
-    for(i=0;i<4;i++){
-      p->next = (struct node*)malloc(sizeof(struct node));
-       p = p->next;
-      p->value = 2+(i*3); 
-       printf("%3d\n", p ->value ); 
-         
-    }
-
-
-
-
-
+   
   
-  /*
-    struct node *p=(struct node*)malloc(sizeof(struct node));
-    struct node *q=(struct node*)malloc(sizeof(struct node));
-    struct node *r=(struct node*)malloc(sizeof(struct node));
-    struct node *s=(struct node*)malloc(sizeof(struct node));
-    p->value = c;
-    p->next=q;
-    head=p;
-    q->value=head->value+3;
-    q->next=r;
-    r->value=head ->next->value+3;
-    r->next=NULL;
-  s->value = 2;
-  s->next =p;
-  head = s;
-   tmp=head;
-        for(i=0;i<4;i++){
-            printf("%3d\n", tmp->value);
-         tmp = tmp->next;
-        }*/
-
-    /*  Exercise VI Free all node !!
+    /*  Exercise VI Free all node !!*/
          //use a loop to help
-          
-     */
+     tmp=head;
+      p=head;
+       while(tmp!=NULL){
+        p=tmp->next;
+         printf("Del %d\n",tmp->value);
+                       free(tmp); 
+      tmp=p;
+          }
+
     
     return 0;
 }
