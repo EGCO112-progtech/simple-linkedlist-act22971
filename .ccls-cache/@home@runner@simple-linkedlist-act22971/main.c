@@ -15,15 +15,16 @@
  */
 int main(int argc, const char * argv[]) {
     int c=5;
-    struct node b,*head,d,z,*temp ;
-    struct node *p=(struct node*)malloc(sizeof(struct node)*100);
-    p->value = c;
-    p->next=&b;
-    head=p;
+    struct node a,b,*head,d,z,*temp ;
+    a.value = c;
+    a.next=&b;
+    head=&a;
     b.value=head->value+3;
     b.next=&d;
     d.value=head ->next->value+3;
     d.next=NULL;
+
+
    /* printf("%d\n", head ->value ); //what value for 5
     printf("%d\n", head ->next->value ); //what value for 8
     printf("%d\n", head ->next ->next->value );*/
@@ -68,9 +69,20 @@ int main(int argc, const char * argv[]) {
     
  /*  Exercise V Use malloc to create all nodes, instead of create a struct!!*/
          //use a loop to help
-
-
-
+    struct node *p=(struct node*)malloc(sizeof(struct node)*100);
+    struct node *q=(struct node*)malloc(sizeof(struct node)*100);
+    struct node *r=(struct node*)malloc(sizeof(struct node)*100);
+    struct node *s=(struct node*)malloc(sizeof(struct node)*100);
+    p->value = c;
+    p->next=q;
+    head=p;
+    q->value=head->value+3;
+    q->next=r;
+    r->value=head ->next->value+3;
+    r->next=NULL;
+  s->value = 2;
+  s->next =p;
+  head = s;
   
 
     /*  Exercise VI Free all node !!
